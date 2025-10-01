@@ -1,12 +1,10 @@
-# Chatbot RAG<<<<<<< HEAD
+# i4BOT
 
-# Chatbot RAG# Chatbot RAG Ultra-Otimizado 🚀# 🤖 Chatbot RAG Ultra-Otimizado
+# 🤖 Chatbot RAG Ultra-Otimizado
 
 Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.=======
 
 # Chatbot RAG 🤖 
-
-## Características>>>>>>> 1761736713dc3a0e4ca0bdcec9b29927a32185c9
 
 
 
