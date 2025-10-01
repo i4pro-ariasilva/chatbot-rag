@@ -19,11 +19,6 @@ Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consu
 - **Monitoramento**: Métricas de performance em tempo real
 
 
-
-## Instalação Rápida## CaracterísticasSistema de chatbot com Retrieval-Augmented Generation (RAG) ultra-otimizado para resposta rápida e eficiente sobre documentos internos.Sistema inteligente de chatbot que combina **Retrieval-Augmented Generation (RAG)** para responder perguntas sobre documentação interna com **performance otimizada**.
-
-
-
 ### Pré-requisitos
 
 - Python 3.8+
