@@ -1,0 +1,28 @@
+Documentação sobre APIs do sistema.
+
+Este documento contém informações sobre as APIs disponíveis no sistema de chatbot RAG.
+
+ENDPOINTS DISPONÍVEIS:
+
+1. POST /chat
+   - Descrição: Envia uma mensagem para o chatbot
+   - Parâmetros: { "message": "sua pergunta aqui" }
+   - Resposta: { "response": "resposta do chatbot", "sources": [...] }
+
+2. GET /status
+   - Descrição: Obtém o status e métricas do sistema
+   - Resposta: Informações sobre performance, cache, documentos processados
+
+3. GET /
+   - Descrição: Interface web do chatbot
+   - Resposta: Página HTML da interface
+
+CONFIGURAÇÃO:
+- O sistema usa a API Groq por padrão
+- Requer chave de API configurada no arquivo .env
+- Suporta cache para melhor performance
+
+EXEMPLOS DE USO:
+curl -X POST "http://localhost:8000/chat" -H "Content-Type: application/json" -d '{"message": "O que é RAG?"}'
+
+O sistema responderá com base nos documentos disponíveis na base de conhecimento.

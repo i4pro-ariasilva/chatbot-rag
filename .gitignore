@@ -1,0 +1,61 @@
+# Arquivos sensíveis e temporários
+.env
+*.env
+.env.local
+.env.production
+.env.development
+
+# Chaves de API
+*api_key*
+*secret*
+*token*
+
+# Cache e dados temporários
+cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Base de dados (podem ser grandes)
+vector_db/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Arquivos específicos do projeto que não devem ser versionados
+# Se você quiser incluir alguns documentos de exemplo, mova-os para uma pasta separada
+db_intern/
+
+# Arquivos de teste temporários
+test_*.py
+temp_*
+
+# Documentos que podem conter informações sensíveis
+# (revise cada um antes de decidir incluir)

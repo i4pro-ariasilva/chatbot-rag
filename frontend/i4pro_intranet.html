@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="favicon.png"/>
+    <title>i4net - Portal i4PRO</title>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .i4pro-header {
+            background: #28bebe;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .i4pro-header--container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 2rem;
+        }
+
+        .v-toolbar__title {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            height: 80px;
+            width: 130px;
+            background: url('./img/logo.png') center/contain no-repeat;
+        }
+
+        .spacer {
+            flex: 1;
+        }
+
+        .i4pro-menu {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-btn.active {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .nav-btn i {
+            margin-right: 0.5rem;
+            font-size: 18px;
+        }
+
+        /* Main Content */
+        .v-main {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .i4pro-app {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Left Column - Cards */
+        .i4pro-app__cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .i4pro-cards-fixed {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Cores específicas dos cards */
+        .i4pro-cards-fixed--pallas {
+            background: #f26423;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--system-point {
+            background: #28bebe;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--okr {
+            background: #558dcd;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--jira {
+            background: #095bb0;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--confluence {
+            background: #4c84c1;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--digital-sheet {
+            background: #92599e;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--i4performance {
+            background: #f26423;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--gupy {
+            background: #fc4557;
+            color: white;
+        }
+
+        .i4pro-cards-fixed--i4transforma {
+            background: #b054cc;
+            color: white;
+        }
+
+        .i4pro-cards-fixed:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        .i4pro-cards-fixed--link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .i4pro-cards-fixed__icon {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .i4pro-cards-fixed__title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .pallas-search {
+            margin-top: 1rem;
+        }
+
+        .pallas-search input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+
+        .pallas-search input::placeholder {
+            color: #666;
+        }
+
+        /* Ícones especiais */
+        .jira-icon, .confluence-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .jira-icon span, .confluence-icon span {
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Logos das marcas */
+        .brand-logo {
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        /* Center Column - Feed */
+        .feed {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .i4pro-home__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .i4pro-home__header__title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #333;
+        }
+
+        .btn-download-branding-docs {
+            background: #0073E0;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download-branding-docs:hover {
+            background: #005bb5;
+        }
+
+        /* Carousel */
+        .carousel-container {
+            height: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-banner {
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjM1MCIgdmlld0JveD0iMCAwIDYwMCAzNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzUwIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXIpIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTYwIiBmb250LWZhbWlseT0iUm9ib3RvIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkV4ZW1wbG8gZGUgVmFsb3I8L3RleHQ+Cjx0ZXh0IHg9IjMwMCIgeT0iMjEwIiBmb250LWZhbWlseT0iUm9ib3RvIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGVzcXVpc2EgZGUgU2F0aXNmYcOnw6NvIDIwMjU8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXIiIHgxPSIwIiB5MT0iMCIgeDI9IjYwMCIgeTI9IjM1MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNjY3ZWVhIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc2NGJhMiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==') center/cover no-repeat;
+            cursor: pointer;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: white;
+        }
+
+        /* Values Section */
+        .i4pro-cards-values {
+            margin: 2rem 0;
+        }
+
+        .i4pro-cards-values__title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .i4pro-cards-values__items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .value-animation {
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        /* Cores específicas dos valores */
+        .value-animation.atitude-dono {
+            color: #b054cc;
+            background: rgba(176, 84, 204, 0.15);
+            border-color: rgba(176, 84, 204, 0.3);
+        }
+
+        .value-animation.colaboracao {
+            color: #4c84c1;
+            background: rgba(76, 132, 193, 0.15);
+            border-color: rgba(76, 132, 193, 0.3);
+        }
+
+        .value-animation.inovacao {
+            color: #b054cc;
+            background: rgba(176, 84, 204, 0.15);
+            border-color: rgba(176, 84, 204, 0.3);
+        }
+
+        .value-animation.integridade {
+            color: #28bebe;
+            background: rgba(40, 190, 190, 0.15);
+            border-color: rgba(40, 190, 190, 0.3);
+        }
+
+        .value-animation.foco-cliente {
+            color: #fc4557;
+            background: rgba(252, 69, 87, 0.15);
+            border-color: rgba(252, 69, 87, 0.3);
+        }
+
+        .value-animation.excelencia {
+            color: #f26423;
+            background: rgba(242, 100, 35, 0.15);
+            border-color: rgba(242, 100, 35, 0.3);
+        }
+
+        .value-animation:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-animation.atitude-dono:hover {
+            box-shadow: 0 4px 15px rgba(176, 84, 204, 0.4);
+        }
+
+        .value-animation.colaboracao:hover {
+            box-shadow: 0 4px 15px rgba(76, 132, 193, 0.4);
+        }
+
+        .value-animation.inovacao:hover {
+            box-shadow: 0 4px 15px rgba(176, 84, 204, 0.4);
+        }
+
+        .value-animation.integridade:hover {
+            box-shadow: 0 4px 15px rgba(40, 190, 190, 0.4);
+        }
+
+        .value-animation.foco-cliente:hover {
+            box-shadow: 0 4px 15px rgba(252, 69, 87, 0.4);
+        }
+
+        .value-animation.excelencia:hover {
+            box-shadow: 0 4px 15px rgba(242, 100, 35, 0.4);
+        }
+
+        /* Tools Section */
+        .i4pro-tools {
+            margin: 2rem 0;
+        }
+
+        .i4pro-tools__title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .i4pro-tools__search {
+            margin-bottom: 1.5rem;
+        }
+
+        .i4pro-tools__search input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .i4pro-card-outline {
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .i4pro-card-outline:hover {
+            border-color: #0073E0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,115,224,0.2);
+        }
+
+        .i4pro-card-outline__item__icon {
+            font-size: 24px;
+            color: #0073E0;
+            margin-bottom: 0.75rem;
+        }
+
+        .i4pro-card-outline__item__title {
+            font-weight: 500;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        /* Right Column - Environments */
+        .i4pro-app__environments {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            height: fit-content;
+        }
+
+        .i4pro-environments__title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .i4pro-environments__search {
+            margin-bottom: 1.5rem;
+        }
+
+        .i4pro-environments__search input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .environments-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .environment-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .environment-item:hover {
+            background-color: #f8f9fa;
+            padding-left: 0.5rem;
+        }
+
+        .environment-toggle {
+            background: none;
+            border: none;
+            color: #666;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .environment-label {
+            font-weight: 500;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Settings Button */
+        #settings-wrapper {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        #settings {
+            background: #333;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        #settings:hover {
+            background: #555;
+            transform: rotate(90deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .i4pro-app {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .i4pro-menu {
+                display: none;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .i4pro-home__header__title {
+                font-size: 1.5rem;
+            }
+
+            .carousel-container {
+                height: 250px;
+            }
+
+            .i4pro-cards-values__items {
+                justify-content: center;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0073E0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="i4pro-header">
+        <div class="i4pro-header--container">
+            <div class="v-toolbar__title">
+                <div class="logo-container"></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="i4pro-menu">
+                <button class="nav-btn active">
+                    <i class="mdi mdi-home"></i> Home
+                </button>
+                <button class="nav-btn">
+                    <i class="mdi mdi-message-bulleted"></i> Comunicação
+                </button>
+                <button class="nav-btn">
+                    <i class="mdi mdi-cake-variant"></i> Aniversariantes do mês
+                </button>
+                <button class="nav-btn">
+                    <i class="mdi mdi-sitemap"></i> Organograma
+                </button>
+                <button class="nav-btn">
+                    <i class="mdi mdi-home-group"></i> Convênios
+                </button>
+                <button class="nav-btn">
+                    <i class="mdi mdi-hand-heart"></i> Benefícios
+                </button>
+                <button class="nav-btn">
+                    <i class="mdi mdi-account-supervisor"></i> Lideranças
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Settings Button -->
+    <div id="settings-wrapper">
+        <div id="settings" title="Configurações de Tema">
+            <i class="mdi mdi-cog" style="font-size: 30px;"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="v-main">
+        <div class="container">
+            <div class="i4pro-app">
+                <!-- Left Column - Cards -->
+                <div class="i4pro-app__cards">
+                    <!-- Pallas Card -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--pallas">
+                        <div class="i4pro-cards-fixed--link">
+                            <i class="mdi mdi-hubspot i4pro-cards-fixed__icon"></i>
+                            <h3 class="i4pro-cards-fixed__title">Pallas</h3>
+                        </div>
+                        <div class="pallas-search">
+                            <input type="number" placeholder="Buscar WEX" min="0">
+                        </div>
+                    </div>
+
+                    <!-- System Point -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--system-point">
+                        <div class="i4pro-cards-fixed--link">
+                            <i class="mdi mdi-clock i4pro-cards-fixed__icon"></i>
+                            <h3 class="i4pro-cards-fixed__title">Sistema de ponto eletrônico</h3>
+                        </div>
+                    </div>
+
+                    <!-- OKR -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--okr">
+                        <div class="i4pro-cards-fixed--link">
+                            <i class="mdi mdi-bullseye-arrow i4pro-cards-fixed__icon"></i>
+                            <h3 class="i4pro-cards-fixed__title">Conheça os nossos OKRs</h3>
+                        </div>
+                    </div>
+
+                    <!-- Jira -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--jira">
+                        <div class="i4pro-cards-fixed--link">
+                            <div class="jira-icon">
+                                <span>J</span>
+                            </div>
+                            <h3 class="i4pro-cards-fixed__title">Jira</h3>
+                        </div>
+                    </div>
+
+                    <!-- Confluence -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--confluence">
+                        <div class="i4pro-cards-fixed--link">
+                            <div class="confluence-icon">
+                                <span>C</span>
+                            </div>
+                            <h3 class="i4pro-cards-fixed__title">Confluence</h3>
+                        </div>
+                    </div>
+
+                    <!-- Digital Sheet -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--digital-sheet">
+                        <div class="i4pro-cards-fixed--link">
+                            <i class="mdi mdi-file-clock i4pro-cards-fixed__icon"></i>
+                            <h3 class="i4pro-cards-fixed__title">Folha digital</h3>
+                        </div>
+                    </div>
+
+                    <!-- i4performance -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--i4performance">
+                        <div class="i4pro-cards-fixed--link">
+                            <div class="brand-logo">
+                                i4performance
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gupy -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--gupy">
+                        <div class="i4pro-cards-fixed--link">
+                            <i class="mdi mdi-briefcase i4pro-cards-fixed__icon"></i>
+                            <h3 class="i4pro-cards-fixed__title">Carreiras (Gupy)</h3>
+                        </div>
+                    </div>
+
+                    <!-- i4transforma -->
+                    <div class="i4pro-cards-fixed i4pro-cards-fixed--i4transforma">
+                        <div class="i4pro-cards-fixed--link">
+                            <div class="brand-logo">
+                                i4transforma
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Column - Feed -->
+                <div class="feed">
+                    <div class="i4pro-home">
+                        <div class="i4pro-home__header">
+                            <h1 class="i4pro-home__header__title">/ Home</h1>
+                            <button class="btn-download-branding-docs" title="Copiar caminho dos arquivos da nova marca">
+                                <i class="mdi mdi-content-copy"></i>
+                            </button>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="carousel-container">
+                            <div class="carousel-banner" onclick="window.open('https://pt.surveymonkey.com/r/exemplodevalor2025', '_blank')"></div>
+                            <div class="carousel-controls">
+                                <div class="carousel-dot active"></div>
+                                <div class="carousel-dot"></div>
+                            </div>
+                        </div>
+
+                        <!-- Values Section -->
+                        <div class="i4pro-cards-values">
+                            <h2 class="i4pro-cards-values__title">/ Conheça os nossos valores</h2>
+                            <div class="i4pro-cards-values__items">
+                                <span class="value-animation atitude-dono">Atitude de Dono</span>
+                                <span class="value-animation colaboracao">Colaboração Construtiva</span>
+                                <span class="value-animation inovacao">Inovação</span>
+                                <span class="value-animation integridade">Integridade</span>
+                                <span class="value-animation foco-cliente">Foco no Cliente</span>
+                                <span class="value-animation excelencia">Excelência</span>
+                            </div>
+                        </div>
+
+                        <!-- Tools Section -->
+                        <div class="i4pro-tools">
+                            <h3 class="i4pro-tools__title">/ Nossas Ferramentas</h3>
+                            <div class="i4pro-tools__search">
+                                <input type="text" placeholder="Pesquisar">
+                            </div>
+                            <div class="tools-grid">
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-upload i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Publicador</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-refresh i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Update</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-magnify i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Trace viewer</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-table-large i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Report creator</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-brush i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Report design</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-monitor i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Report viewer</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-anchor i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Produtos Apoio</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-link-variant i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Connection strings</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-card-text i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Portal seguros</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-eye i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Testador</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-cogs i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Componentes</span>
+                                    </div>
+                                </div>
+                                <div class="i4pro-card-outline">
+                                    <div class="i4pro-card-outline__item">
+                                        <i class="mdi mdi-dev-to i4pro-card-outline__item__icon"></i>
+                                        <span class="i4pro-card-outline__item__title">Portal DEV</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Environments -->
+                <div class="i4pro-app__environments">
+                    <div class="i4pro-environments">
+                        <h3 class="i4pro-environments__title">/ Ambientes</h3>
+                        <div class="i4pro-environments__search">
+                            <input type="text" placeholder="Pesquisar ambientes">
+                        </div>
+                        <div class="environments-list">
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Apoio</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">B4</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Capitalização - Core I</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Contábil</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">DBA</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">EDN</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">EIS</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Financeiro 2.0</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">I4Next</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">LGPD</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Pallas</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Seguros - Austral</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Seguros - Core I</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">Seguros - Core II</div>
+                            </div>
+                            <div class="environment-item">
+                                <button class="environment-toggle">▼</button>
+                                <div class="environment-label">SUSEP</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="copyright">© 2025 i4pro. Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Simulate loading
+                showLoading();
+                setTimeout(hideLoading, 1000);
+            });
+        });
+
+        // Card click handlers
+        document.querySelectorAll('.i4pro-cards-fixed').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.i4pro-cards-fixed__title').textContent;
+                alert(`Acessando: ${title}`);
+            });
+        });
+
+        // Tool card click handlers
+        document.querySelectorAll('.i4pro-card-outline').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.i4pro-card-outline__item__title').textContent;
+                alert(`Abrindo ferramenta: ${title}`);
+            });
+        });
+
+        // Environment toggle functionality
+        document.querySelectorAll('.environment-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isExpanded = this.textContent === '▼';
+                this.textContent = isExpanded ? '▶' : '▼';
+                
+                // Here you would expand/collapse the environment tree
+                console.log('Toggle environment:', this.parentElement.querySelector('.environment-label').textContent);
+            });
+        });
+
+        // Settings button
+        document.getElementById('settings').addEventListener('click', function() {
+            alert('Configurações de tema seriam abertas aqui');
+        });
+
+        // Search functionality
+        document.querySelectorAll('input[placeholder*="Pesquisar"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                console.log('Pesquisando por:', searchTerm);
+                // Implement search filtering here
+            });
+        });
+
+        // Values animation
+        document.querySelectorAll('.value-animation').forEach(value => {
+            value.addEventListener('click', function() {
+                alert(`Saiba mais sobre: ${this.textContent}`);
+            });
+        });
+
+        // Carousel controls
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                document.querySelectorAll('.carousel-dot').forEach(d => d.classList.remove('active'));
+                this.classList.add('active');
+                console.log('Slide changed to:', index + 1);
+            });
+        });
+
+        // Branding docs button
+        document.querySelector('.btn-download-branding-docs').addEventListener('click', function() {
+            navigator.clipboard.writeText('\\\\servidor\\marca\\arquivos\\nova-marca\\').then(() => {
+                alert('Caminho copiado para a área de transferência!');
+            });
+        });
+
+        // Loading functions
+        function showLoading() {
+            document.querySelector('.loading-overlay').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.querySelector('.loading-overlay').style.display = 'none';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            hideLoading();
+            console.log('i4PRO Portal carregado com sucesso!');
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            // Animate values occasionally
+            const values = document.querySelectorAll('.value-animation');
+            const randomValue = values[Math.floor(Math.random() * values.length)];
+            randomValue.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                randomValue.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+    </script>
+</body>
+</html>

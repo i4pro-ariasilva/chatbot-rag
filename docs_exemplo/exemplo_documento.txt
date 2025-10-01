@@ -1,0 +1,21 @@
+Exemplo de documento para teste do sistema de chatbot RAG.
+
+Este é um documento de exemplo que pode ser usado para testar o sistema de chatbot.
+Ele contém informações básicas sobre como o sistema funciona e pode responder perguntas
+sobre RAG (Retrieval-Augmented Generation).
+
+O sistema RAG combina recuperação de informações com geração de texto para fornecer
+respostas mais precisas e contextualmente relevantes.
+
+Características do sistema:
+- Processamento rápido de documentos
+- Cache inteligente para performance
+- Interface web moderna
+- API RESTful para integração
+
+Para usar o sistema:
+1. Adicione seus documentos na pasta db_intern
+2. Execute o servidor
+3. Faça perguntas através da interface web
+
+O sistema processará seus documentos e fornecerá respostas baseadas no conteúdo.
