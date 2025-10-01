@@ -1,177 +1,350 @@
-# Chatbot RAG Ultra-Otimizado 🚀# 🤖 Chatbot RAG Ultra-Otimizado
+# Chatbot RAG# Chatbot RAG Ultra-Otimizado 🚀# 🤖 Chatbot RAG Ultra-Otimizado
 
 
 
-Sistema de chatbot com Retrieval-Augmented Generation (RAG) ultra-otimizado para resposta rápida e eficiente sobre documentos internos.Sistema inteligente de chatbot que combina **Retrieval-Augmented Generation (RAG)** para responder perguntas sobre documentação interna com **performance otimizada**.
+Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
 
 
 
-## 🌟 Características## 🎯 Características Principais
+## CaracterísticasSistema de chatbot com Retrieval-Augmented Generation (RAG) ultra-otimizado para resposta rápida e eficiente sobre documentos internos.Sistema inteligente de chatbot que combina **Retrieval-Augmented Generation (RAG)** para responder perguntas sobre documentação interna com **performance otimizada**.
 
 
 
-- **Performance Ultra-Rápida**: Inicialização em ~12s (vs 30s+ anterior)- **� Ultra Performance**: Cache avançado e algoritmos otimizados
+- **Performance Otimizada**: Inicialização rápida com sistema de cache
 
-- **Sistema de Cache Multi-Camadas**: Cache LRU, cache de respostas e cache de similaridade- **📄 Processamento Inteligente**: Suporte a HTML e texto com chunking otimizado
+- **Interface Web**: Interface moderna e responsiva
 
-- **TF-IDF Otimizado**: Valores pré-computados e early stopping- **� RAG Avançado**: TF-IDF otimizado + Groq API para respostas precisas
+- **TF-IDF Avançado**: Algoritmo otimizado para busca eficiente## 🌟 Características## 🎯 Características Principais
 
-- **Interface Moderna**: UI responsiva e intuitiva- **🌐 Interface Moderna**: Interface web responsiva com métricas de performance
+- **API RESTful**: Endpoints para integração
 
-- **Monitoramento**: Métricas de performance em tempo real- **� Cache Inteligente**: Sistema de cache multi-camadas para velocidade máxima
+- **Monitoramento**: Métricas de performance em tempo real
 
-- **⚡ Inicialização Rápida**: Sistema pronto em segundos
 
-## 🚀 Início Rápido
 
-## 🏗️ Arquitetura
+## Instalação Rápida- **Performance Ultra-Rápida**: Inicialização em ~12s (vs 30s+ anterior)- **� Ultra Performance**: Cache avançado e algoritmos otimizados
 
-### Pré-requisitos
+
+
+### Pré-requisitos- **Sistema de Cache Multi-Camadas**: Cache LRU, cache de respostas e cache de similaridade- **📄 Processamento Inteligente**: Suporte a HTML e texto com chunking otimizado
+
+- Python 3.8+
+
+- Conta Groq (gratuita em [console.groq.com](https://console.groq.com/))- **TF-IDF Otimizado**: Valores pré-computados e early stopping- **� RAG Avançado**: TF-IDF otimizado + Groq API para respostas precisas
+
+
+
+### Passos de Instalação- **Interface Moderna**: UI responsiva e intuitiva- **🌐 Interface Moderna**: Interface web responsiva com métricas de performance
+
+
+
+1. **Clone o repositório**- **Monitoramento**: Métricas de performance em tempo real- **� Cache Inteligente**: Sistema de cache multi-camadas para velocidade máxima
+
+```bash
+
+git clone https://github.com/i4pro-ariasilva/chatbot-rag.git- **⚡ Inicialização Rápida**: Sistema pronto em segundos
+
+cd chatbot-rag
+
+```## 🚀 Início Rápido
+
+
+
+2. **Instale as dependências**## 🏗️ Arquitetura
+
+```bash
+
+pip install -r requirements.txt### Pré-requisitos
+
+```
 
 - Python 3.8+```
 
-- Chave da API Groq (gratuita em [console.groq.com](https://console.groq.com/))chatbot_rag/
+3. **Configure o ambiente**
 
-├── backend/
+```bash- Chave da API Groq (gratuita em [console.groq.com](https://console.groq.com/))chatbot_rag/
+
+cp .env.example .env
+
+# Edite o arquivo .env e adicione sua chave da API Groq├── backend/
+
+```
 
 ### Instalação│   ├── main.py              # Servidor FastAPI otimizado
 
-│   ├── document_processor.py # Processamento de documentos
+4. **Adicione seus documentos**
 
-1. **Clone o repositório**│   └── rag_engine.py        # RAG engine ultra-otimizado
+- Coloque arquivos .txt na pasta `db_intern/`│   ├── document_processor.py # Processamento de documentos
 
-```bash├── frontend/
+
+
+5. **Execute o sistema**1. **Clone o repositório**│   └── rag_engine.py        # RAG engine ultra-otimizado
+
+```bash
+
+# Windows```bash├── frontend/
+
+start.bat
 
 git clone <url-do-seu-repo>│   └── index.html           # Interface web moderna
 
-cd chatbot_rag├── config/
+# Linux/Mac
+
+python backend/main.pycd chatbot_rag├── config/
+
+```
 
 ```│   └── settings.py          # Configurações
 
-├── db_intern/              # Documentos da base de conhecimento
+6. **Acesse o chatbot**
 
-2. **Instale as dependências**├── vector_db/              # Banco de dados SQLite
+- Abra seu navegador em: http://localhost:8000├── db_intern/              # Documentos da base de conhecimento
 
-```bash├── cache/                  # Cache de performance
 
-pip install -r requirements.txt├── .env                    # Variáveis de ambiente
 
-```├── requirements.txt        # Dependências Python
+## Estrutura do Projeto2. **Instale as dependências**├── vector_db/              # Banco de dados SQLite
 
-├── start.bat              # Script de inicialização
 
-3. **Configure o ambiente**└── README.md              # Esta documentação
 
-```bash```
+``````bash├── cache/                  # Cache de performance
 
-# Copie o arquivo de exemplo
+chatbot-rag/
 
-copy .env.example .env## 🚀 Início Rápido
+│pip install -r requirements.txt├── .env                    # Variáveis de ambiente
 
-# Edite o .env e adicione sua chave da API Groq
+├── backend/                 # Código do servidor
 
-```### Pré-requisitos
+│   ├── main.py             # Servidor FastAPI```├── requirements.txt        # Dependências Python
 
-- Python 3.8+ 
+│   ├── rag_engine.py       # Engine de busca otimizada
 
-4. **Adicione seus documentos**- Conexão com internet (para API Groq, opcional)
+│   └── document_processor.py # Processamento de documentos├── start.bat              # Script de inicialização
 
-- Coloque seus arquivos .txt na pasta `db_intern/`
+│
 
-### 1. Inicialização Automática
+├── frontend/                # Interface web3. **Configure o ambiente**└── README.md              # Esta documentação
 
-5. **Execute o sistema**```bash
+│   ├── index.html          # Página principal
 
-```bash# Execute o script de inicialização
+│   └── img/                # Recursos visuais```bash```
 
-# Windowsstart.bat
+│
 
-start.bat```
+├── config/                  # Configurações# Copie o arquivo de exemplo
 
-# Ou manualmente
+│   └── settings.py         # Configurações do sistema
 
-python backend/main.py### 2. Inicialização Manual
+│copy .env.example .env## 🚀 Início Rápido
 
-``````bash
+├── docs_exemplo/            # Documentos de exemplo
 
-# Instale as dependências
+│   ├── exemplo_documento.txt# Edite o .env e adicione sua chave da API Groq
 
-6. **Acesse o chatbot**pip install -r requirements.txt
+│   └── documentacao_api.txt
 
-```
+│```### Pré-requisitos
 
-http://localhost:8000# Inicie o servidor
+├── .env.example            # Template de configuração
 
-```python backend/main.py
+├── .gitignore              # Arquivos ignorados pelo Git- Python 3.8+ 
 
-```
+├── requirements.txt        # Dependências Python
 
-## 📁 Estrutura do Projeto
+├── start.bat              # Script de inicialização (Windows)4. **Adicione seus documentos**- Conexão com internet (para API Groq, opcional)
 
-### 3. Acesse a Interface
+└── README.md              # Esta documentação
 
-```Abra seu navegador em: `http://localhost:8000`
+```- Coloque seus arquivos .txt na pasta `db_intern/`
 
-chatbot_rag/
 
-├── backend/             # Código do servidor## ⚙️ Configuração
 
-├── frontend/            # Interface web
+## Configuração### 1. Inicialização Automática
 
-├── config/              # Configurações### Variáveis de Ambiente (.env)
 
-├── db_intern/           # Seus documentos (.txt)```env
 
-├── requirements.txt     # Dependências Python# API Groq (opcional, mas recomendado)
+### Arquivo .env5. **Execute o sistema**```bash
 
-├── start.bat           # Script de inicializaçãoGROQ_API_KEY=sua_chave_aqui
 
-├── .env.example        # Exemplo de configuraçãoGROQ_MODEL=llama3-8b-8192
 
-└── README.md           # Este arquivo
+Copie o arquivo `.env.example` para `.env` e configure:```bash# Execute o script de inicialização
 
-```# Configurações do sistema
 
-DOCUMENTS_DIR=db_intern
 
-## ⚙️ ConfiguraçãoVECTOR_DB_PATH=vector_db/documents.db
+```env# Windowsstart.bat
 
-COLLECTION_NAME=i4pro_docs
+# Diretório dos documentos
 
-### Arquivo .env (obrigatório)```
+DOCUMENTS_DIR=./db_internstart.bat```
 
-```env
 
-DOCUMENTS_DIR=./db_intern### Adicionando Documentos
 
-GROQ_API_KEY=sua_chave_groq_aqui1. Coloque seus arquivos `.txt` ou `.html` no diretório `db_intern/`
+# API Groq (obrigatório)# Ou manualmente
 
-API_PROVIDER=groq2. Reinicie o servidor para indexar os novos documentos
+GROQ_API_KEY=sua_chave_aqui
+
+API_PROVIDER=groqpython backend/main.py### 2. Inicialização Manual
 
 GROQ_MODEL=llama-3.1-8b-instant
 
-```## 🎛️ Uso da Interface
+`````````bash
 
 
+
+### Obtendo Chave da API Groq# Instale as dependências
+
+
+
+1. Acesse [console.groq.com](https://console.groq.com/)6. **Acesse o chatbot**pip install -r requirements.txt
+
+2. Crie uma conta gratuita
+
+3. Vá em "API Keys"```
+
+4. Gere uma nova chave
+
+5. Cole a chave no arquivo `.env`http://localhost:8000# Inicie o servidor
+
+
+
+## Uso```python backend/main.py
+
+
+
+### Interface Web```
+
+1. Acesse http://localhost:8000
+
+2. Digite sua pergunta## 📁 Estrutura do Projeto
+
+3. Pressione Enter ou clique "Enviar"
+
+4. Aguarde a resposta baseada nos documentos### 3. Acesse a Interface
+
+
+
+### API```Abra seu navegador em: `http://localhost:8000`
+
+
+
+**Endpoint de Chat**chatbot_rag/
+
+```bash
+
+POST /chat├── backend/             # Código do servidor## ⚙️ Configuração
+
+Content-Type: application/json
+
+├── frontend/            # Interface web
+
+{
+
+  "message": "sua pergunta aqui"├── config/              # Configurações### Variáveis de Ambiente (.env)
+
+}
+
+```├── db_intern/           # Seus documentos (.txt)```env
+
+
+
+**Status do Sistema**├── requirements.txt     # Dependências Python# API Groq (opcional, mas recomendado)
+
+```bash
+
+GET /status├── start.bat           # Script de inicializaçãoGROQ_API_KEY=sua_chave_aqui
+
+```
+
+├── .env.example        # Exemplo de configuraçãoGROQ_MODEL=llama3-8b-8192
+
+## Performance
+
+└── README.md           # Este arquivo
+
+- **Inicialização**: ~12 segundos para 1000+ documentos
+
+- **Primeira consulta**: ~9 segundos```# Configurações do sistema
+
+- **Consultas subsequentes**: 2-5 segundos (com cache)
+
+- **Capacidade testada**: 1.120 documentos, 9.500+ chunksDOCUMENTS_DIR=db_intern
+
+
+
+## Solução de Problemas## ⚙️ ConfiguraçãoVECTOR_DB_PATH=vector_db/documents.db
+
+
+
+### Erro de inicializaçãoCOLLECTION_NAME=i4pro_docs
+
+```bash
+
+# Verifique dependências### Arquivo .env (obrigatório)```
+
+pip install -r requirements.txt
+
+```env
+
+# Verifique arquivo .env
+
+cat .envDOCUMENTS_DIR=./db_intern### Adicionando Documentos
+
+```
+
+GROQ_API_KEY=sua_chave_groq_aqui1. Coloque seus arquivos `.txt` ou `.html` no diretório `db_intern/`
+
+### Performance lenta
+
+- Verifique se o cache está habilitadoAPI_PROVIDER=groq2. Reinicie o servidor para indexar os novos documentos
+
+- Acesse `/status` para métricas
+
+- Verifique logs no terminalGROQ_MODEL=llama-3.1-8b-instant
+
+
+
+### Problemas com documentos```## 🎛️ Uso da Interface
+
+- Use apenas arquivos .txt
+
+- Verifique caminho em `DOCUMENTS_DIR`
+
+- Confirme que existem documentos em `db_intern/`
 
 ### Obtendo a Chave da API Groq1. **Status do Sistema**: Mostra se o sistema está pronto e quantos documentos foram indexados
 
+## Contribuição
+
 1. Acesse [console.groq.com](https://console.groq.com/)2. **Chat Interativo**: Digite perguntas e receba respostas baseadas na documentação
 
-2. Crie uma conta gratuita3. **Métricas de Performance**: Tempo de resposta e fontes consultadas
+1. Fork o projeto
 
-3. Gere uma API key4. **Limpeza de Cache**: Botão para otimizar a memória quando necessário
+2. Crie uma branch: `git checkout -b minha-feature`2. Crie uma conta gratuita3. **Métricas de Performance**: Tempo de resposta e fontes consultadas
+
+3. Commit: `git commit -m 'Adiciona nova feature'`
+
+4. Push: `git push origin minha-feature`3. Gere uma API key4. **Limpeza de Cache**: Botão para otimizar a memória quando necessário
+
+5. Abra um Pull Request
 
 4. Adicione no arquivo `.env`
 
-## 📊 Performance
+## Licença
 
 ## 📊 Performance
+
+Este projeto está sob a licença MIT.
+
+## 📊 Performance
+
+## Suporte
 
 - **Inicialização**: ~10-15 segundos para 1000+ documentos
 
-- **Inicialização**: ~12 segundos para 1.000+ documentos- **Resposta**: < 1 segundo para consultas em cache
+- Documentação: Este README
 
+- Issues: [GitHub Issues](https://github.com/i4pro-ariasilva/chatbot-rag/issues)- **Inicialização**: ~12 segundos para 1.000+ documentos- **Resposta**: < 1 segundo para consultas em cache
+
+- Exemplos: Pasta `docs_exemplo/`
 - **Primeira consulta**: ~9 segundos- **Resposta**: 2-5 segundos para consultas novas
 
 - **Consultas subsequentes**: 2-5 segundos (com cache)- **Cache Hit Rate**: 70-80% em uso normal
