@@ -2,7 +2,7 @@
 
 # 🤖 Chatbot RAG Ultra-Otimizado
 
-Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.=======
+Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
 
 # Chatbot RAG 🤖 
 
