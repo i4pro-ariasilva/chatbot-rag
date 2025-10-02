@@ -36,9 +36,9 @@ pip install -r requirements.txt##
 ```
 
 4. **Adicione seus documentos**
-
-- Coloque arquivos .txt na pasta `db_intern/`
-
+```bash
+# Coloque arquivos .txt na pasta `db_intern/`
+```
 
 5. **Execute o sistema**
 
