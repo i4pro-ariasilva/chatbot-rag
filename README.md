@@ -55,7 +55,7 @@ python backend/main.py
 ```
 6. **Acesse o chatbot**
 
-- Abra seu navegador em: http://localhost:8000cd chatbot-rag
+- Abra seu navegador em: http://localhost:8000
 
 
 Bom proveito! 
