@@ -1,74 +1,144 @@
-# i4BOT
-
-# 🤖 Chatbot RAG Ultra-Otimizado
-
-Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
-
-# Chatbot RAG 🤖 
+# Chatbot RAG# i4BOT
 
 
 
-- **Performance Otimizada**: Inicialização rápida com sistema de cache
-
-- **Interface Web**: Interface moderna e responsiva
-
-- **TF-IDF Avançado**: Algoritmo otimizado para busca eficienteSistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
-
-- **API RESTful**: Endpoints para integração
-
-- **Monitoramento**: Métricas de performance em tempo real
-
-
-### Pré-requisitos
-
-- Python 3.8+
-
-- Conta Groq (gratuita em [console.groq.com](https://console.groq.com/))- **Performance Otimizada**: Inicialização rápida com sistema de cache
+Sistema de chatbot que responde perguntas baseado em documentos internos usando Retrieval-Augmented Generation.# 🤖 Chatbot RAG Ultra-Otimizado
 
 
 
-### Passos de Instalação- **Interface Web**: Interface moderna e responsiva
+## Como UsarSistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
 
 
 
-1. **Clone o repositório**- **TF-IDF Avançado**: Algoritmo otimizado para busca eficiente## 🌟 Características## 🎯 Características Principais
+### 1. Instalar# Chatbot RAG 🤖 
 
 ```bash
 
-git clone https://github.com/i4pro-ariasilva/chatbot-rag.git- **API RESTful**: Endpoints para integração
+git clone https://github.com/i4pro-ariasilva/chatbot-rag.git
 
 cd chatbot-rag
 
-```- **Monitoramento**: Métricas de performance em tempo real
-
-
-
-2. **Instale as dependências**
-
-```bash
-
-pip install -r requirements.txt## Instalação Rápida- **Performance Ultra-Rápida**: Inicialização em ~12s (vs 30s+ anterior)- **� Ultra Performance**: Cache avançado e algoritmos otimizados
+pip install -r requirements.txt- **Performance Otimizada**: Inicialização rápida com sistema de cache
 
 ```
 
+- **Interface Web**: Interface moderna e responsiva
 
+### 2. Configurar
 
-3. **Configure o ambiente**
-
-```bash### Pré-requisitos- **Sistema de Cache Multi-Camadas**: Cache LRU, cache de respostas e cache de similaridade- **📄 Processamento Inteligente**: Suporte a HTML e texto com chunking otimizado
+```bash- **TF-IDF Avançado**: Algoritmo otimizado para busca eficienteSistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
 
 cp .env.example .env
 
-# Edite o arquivo .env e adicione sua chave da API Groq- Python 3.8+
+# Edite .env e adicione sua chave da API Groq- **API RESTful**: Endpoints para integração
 
 ```
 
-- Conta Groq (gratuita em [console.groq.com](https://console.groq.com/))- **TF-IDF Otimizado**: Valores pré-computados e early stopping- **� RAG Avançado**: TF-IDF otimizado + Groq API para respostas precisas
+- **Monitoramento**: Métricas de performance em tempo real
+
+### 3. Executar
+
+```bash
+
+# Windows### Pré-requisitos
+
+start.bat
+
+- Python 3.8+
+
+# Linux/Mac  
+
+python backend/main.py- Conta Groq (gratuita em [console.groq.com](https://console.groq.com/))- **Performance Otimizada**: Inicialização rápida com sistema de cache
+
+```
+
+
+
+### 4. Acessar
+
+Abra: http://localhost:8000### Passos de Instalação- **Interface Web**: Interface moderna e responsiva
+
+
+
+## Configuração
+
+
+
+### Chave da API Groq1. **Clone o repositório**- **TF-IDF Avançado**: Algoritmo otimizado para busca eficiente## 🌟 Características## 🎯 Características Principais
+
+1. Acesse [console.groq.com](https://console.groq.com/)
+
+2. Crie uma conta gratuita```bash
+
+3. Gere uma API key
+
+4. Cole no arquivo `.env`:git clone https://github.com/i4pro-ariasilva/chatbot-rag.git- **API RESTful**: Endpoints para integração
+
+
+
+```envcd chatbot-rag
+
+GROQ_API_KEY=sua_chave_aqui
+
+DOCUMENTS_DIR=./db_intern```- **Monitoramento**: Métricas de performance em tempo real
+
+```
+
+
+
+### Documentos
+
+- Coloque seus arquivos `.txt` na pasta `db_intern/`2. **Instale as dependências**
+
+- O sistema processará automaticamente
+
+```bash
+
+## Estrutura
+
+```pip install -r requirements.txt## Instalação Rápida- **Performance Ultra-Rápida**: Inicialização em ~12s (vs 30s+ anterior)- **� Ultra Performance**: Cache avançado e algoritmos otimizados
+
+chatbot-rag/
+
+├── backend/         # Código do servidor```
+
+├── frontend/        # Interface web
+
+├── config/          # Configurações
+
+├── docs_exemplo/    # Exemplos
+
+└── db_intern/       # Seus documentos3. **Configure o ambiente**
+
+```
+
+```bash### Pré-requisitos- **Sistema de Cache Multi-Camadas**: Cache LRU, cache de respostas e cache de similaridade- **📄 Processamento Inteligente**: Suporte a HTML e texto com chunking otimizado
+
+## API
+
+```bashcp .env.example .env
+
+# Chat
+
+POST /chat# Edite o arquivo .env e adicione sua chave da API Groq- Python 3.8+
+
+{"message": "sua pergunta"}
+
+```
+
+# Status
+
+GET /status- Conta Groq (gratuita em [console.groq.com](https://console.groq.com/))- **TF-IDF Otimizado**: Valores pré-computados e early stopping- **� RAG Avançado**: TF-IDF otimizado + Groq API para respostas precisas
+
+```
 
 4. **Adicione seus documentos**
 
-- Coloque arquivos .txt na pasta `db_intern/`
+## Requisitos
 
+- Python 3.8+- Coloque arquivos .txt na pasta `db_intern/`
+
+- Chave API Groq (gratuita)
 
 
 5. **Execute o sistema**### Passos de Instalação- **Interface Moderna**: UI responsiva e intuitiva- **🌐 Interface Moderna**: Interface web responsiva com métricas de performance
