@@ -1,6 +1,4 @@
-# i4BOT
-
-# 🤖 Chatbot RAG U
+# 🤖 I4Chatbot RAG 
 
 Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
 
