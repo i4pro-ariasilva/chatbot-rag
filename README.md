@@ -1,6 +1,6 @@
 # i4BOT
 
-# 🤖 Chatbot RAG Ultra-Otimizado
+# 🤖 Chatbot RAG U
 
 Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consultas rápidas em documentos internos.
 
@@ -9,7 +9,7 @@ Sistema de chatbot com Retrieval-Augmented Generation (RAG) otimizado para consu
 - Python 3.8+
 
 - Conta Groq (gratuita em [console.groq.com](https://console.groq.com/))-
-- 
+ 
 ### Passos de Instalação- 
 
 1. **Clone o repositório**
@@ -33,9 +33,9 @@ pip install -r requirements.txt##
 
 ```bash
 
-cp .env.example .env
+cp .env
 ```
-# Edite o arquivo .env e adicione sua chave da API Groq- Python 3.8+
+# Edite o arquivo .env e adicione sua chave da API Groq
 
 
 4. **Adicione seus documentos**
