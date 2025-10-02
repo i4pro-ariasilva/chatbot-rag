@@ -32,11 +32,8 @@ pip install -r requirements.txt##
 3. **Configure o ambiente**
 
 ```bash
-
-cp .env
-```
 # Edite o arquivo .env e adicione sua chave da API Groq
-
+```
 
 4. **Adicione seus documentos**
 
